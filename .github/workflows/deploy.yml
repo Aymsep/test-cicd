@@ -13,9 +13,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: Update netlify-cli
+        run: |
+          npm install -g netlify-cli@latest
+
       - name: Deploy to Netlify
         run: |
-          npm install -g netlify-cli
           netlify deploy --prod --dir=.
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
